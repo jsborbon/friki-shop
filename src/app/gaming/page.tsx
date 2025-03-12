@@ -9,7 +9,7 @@ export default function GamingPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [page, setPage] = useState(1);
-    const pageSize = 10; // Fixed page size for pagination
+    const pageSize = 10; 
 
     useEffect(() => {
         fetch(`/api/products?category=GAMING&page=${page}&pageSize=${pageSize}`)

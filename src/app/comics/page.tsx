@@ -56,6 +56,7 @@ export default function ComicsPage() {
                         </div>
                         <div className="p-4">
                             <h2 className="text-xl font-bold mb-2">{comic.title}</h2>
+                            <h3 className="text-lg font-semibold mb-2 text-gray-500">{comic.price}</h3>
                             <p className="text-gray-600 dark:text-gray-300">{comic.description}</p>
                             {comic.metadata && (
                                 <ul className="mt-2 text-gray-500 dark:text-gray-400 text-sm">

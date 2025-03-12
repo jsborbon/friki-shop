@@ -9,7 +9,7 @@ export default function CosplayPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
-  const pageSize = 10; // Fixed page size for pagination
+  const pageSize = 10; 
 
   useEffect(() => {
     fetch(`/api/products?category=COSPLAY&page=${page}&pageSize=${pageSize}`)
@@ -56,6 +56,7 @@ export default function CosplayPage() {
             </div>
             <div className="p-4">
               <h2 className="text-xl font-bold mb-2">{cosplay.title}</h2>
+              <h3 className="text-lg font-semibold mb-2 text-gray-500">{cosplay.price}</h3>
               <p className="text-gray-600 dark:text-gray-300">{cosplay.description}</p>
               {cosplay.metadata && (
                 <ul className="mt-2 text-gray-500 dark:text-gray-400 text-sm">
