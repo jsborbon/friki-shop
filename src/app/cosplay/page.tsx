@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { CosplayProduct } from "@/domain/models";
+import { useRouter } from "next/navigation";
 
 export default function CosplayPage() {
   const [cosplayList, setCosplayList] = useState<CosplayProduct[]>([]);
@@ -10,6 +11,7 @@ export default function CosplayPage() {
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const pageSize = 10; 
+  const router = useRouter();
 
   useEffect(() => {
     fetch(`/api/products?category=COSPLAY&page=${page}&pageSize=${pageSize}`)
@@ -50,7 +52,7 @@ export default function CosplayPage() {
       <h1 className="text-4xl font-bold mb-8">Cosplay Zone</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cosplayList.map((cosplay) => (
-          <div key={cosplay.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div key={cosplay.id} onClick={() => router.push(`/cosplay/${cosplay.id}`)} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
             <div className="relative h-48 w-full">
               <Image src={cosplay.image} alt={cosplay.title} fill className="object-cover" />
             </div>

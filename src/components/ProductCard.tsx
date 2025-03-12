@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useCart } from '@/context/CartContext'
@@ -10,6 +11,8 @@ import { ProductWithCategory } from '@/domain/models'
 type ProductCardProps = ProductWithCategory
 
 export default function ProductCard({ id, title, price, image, description, category }: ProductCardProps) {
+    const [imgSrc, setImgSrc] = useState(image ?? '/images/not-found.jpg');
+
     const { addItem } = useCart()
     const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist()
 
@@ -23,7 +26,8 @@ export default function ProductCard({ id, title, price, image, description, cate
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
                 <div className="relative h-48 w-full">
                     <Image
-                        src={image || "/images/not-found.jpg"}
+                        src={imgSrc}
+                        onError={() => setImgSrc('/images/not-found.jpg')}
                         alt={title}
                         fill
                         className="object-cover"

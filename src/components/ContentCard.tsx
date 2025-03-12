@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-
+import { useState } from 'react'
 interface ContentCardProps {
   title: string
   price: number
@@ -10,12 +10,15 @@ interface ContentCardProps {
 }
 
 export default function ContentCard({ title, price, description, image, link }: ContentCardProps) {
+  const [imgSrc, setImgSrc] = useState(image ?? '/images/not-found.jpg');
+
   return (
     <Link href={link}>
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
         <div className="relative h-48 w-full">
           <Image
-            src={image || "/images/not-found.jpg"}
+            src={imgSrc}
+            onError={() => setImgSrc('/images/not-found.jpg')}
             alt={title}
             fill
             className="object-cover"

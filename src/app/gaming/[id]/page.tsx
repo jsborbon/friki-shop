@@ -14,6 +14,8 @@ export default function GamingProductPage() {
     const [product, setProduct] = useState<GamingProduct | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [imgSrc, setImgSrc] = useState(product?.image ?? '/images/not-found.jpg');
+
     useEffect(() => {
         if (!params.id) return;
 
@@ -42,7 +44,7 @@ export default function GamingProductPage() {
         <div className="container mx-auto p-8">
             <div className="grid md:grid-cols-2 gap-8">
                 <motion.div className="relative h-96 w-full">
-                    <Image src={product.image} alt={product.title} fill className="object-contain rounded-lg shadow-lg" />
+                    <Image src={imgSrc} onError={() => setImgSrc('/images/not-found.jpg')} alt={product.title} fill className="object-contain rounded-lg shadow-lg" />
                 </motion.div>
 
                 <motion.div className="space-y-6">
