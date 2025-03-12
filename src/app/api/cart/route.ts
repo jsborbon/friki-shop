@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     }
 
     const cartItem = await prisma.cart.upsert({
-      where: { userId_productId: { userId, productId } },
+      where: { userId_productId: { userId, productId } }, // Use composite key
       update: { quantity: { increment: quantity } },
       create: { userId, productId, quantity }
     })

@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import ProductGrid from '@/components/ProductGrid'
 import SearchBar from '@/components/SearchBar'
 import ProductFilter from '@/components/ProductFilter'
 import { ProductWithCategory } from '@/domain/models'
 
-export default function SearchPage() {
+function SearchContent() {
     const searchParams = useSearchParams()
     const query = searchParams.get('q') || ''
 
@@ -79,5 +79,13 @@ export default function SearchPage() {
                 </main>
             </div>
         </div>
+    )
+}
+
+export default function SearchPage() {
+    return (
+        <Suspense fallback={<div className="text-center py-8">Loading search...</div>}>
+            <SearchContent />
+        </Suspense>
     )
 }
