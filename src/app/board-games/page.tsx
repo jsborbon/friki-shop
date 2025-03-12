@@ -52,7 +52,7 @@ export default function BoardGamesPage() {
       <h1 className="text-4xl font-bold mb-8">Board Games Zone</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {boardGamesList.map((boardGame) => (
-          <div key={boardGame.id} onClick={() => router.push(`/board-games/${boardGame.id}`)} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div key={boardGame.id} onClick={() => router.push(`/board-games/${boardGame.id}`)} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg cursor-pointer overflow-hidden">
             <div className="relative h-48 w-full">
               <Image src={boardGame.image} alt={boardGame.title} fill className="object-cover" />
             </div>

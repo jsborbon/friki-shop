@@ -52,7 +52,7 @@ export default function MoviesPage() {
       <h1 className="text-4xl font-bold mb-8">Movies Zone</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {moviesList.map((movie) => (
-          <div key={movie.id} onClick={() => router.push(`/movies/${movie.id}`)} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div key={movie.id} onClick={() => router.push(`/movies/${movie.id}`)} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg cursor-pointer overflow-hidden">
             <div className="relative h-48 w-full">
               <Image src={movie.image} alt={movie.title} fill className="object-cover" />
             </div>

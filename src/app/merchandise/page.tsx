@@ -52,7 +52,7 @@ export default function MerchandisePage() {
       <h1 className="text-4xl font-bold mb-8">Merchandise Zone</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {merchandiseList.map((merchandise) => (
-          <div key={merchandise.id} onClick={() => router.push(`/merchandise/${merchandise.id}`)} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div key={merchandise.id} onClick={() => router.push(`/merchandise/${merchandise.id}`)} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg cursor-pointer overflow-hidden">
             <div className="relative h-48 w-full">
               <Image src={merchandise.image} alt={merchandise.title} fill className="object-cover" />
             </div>

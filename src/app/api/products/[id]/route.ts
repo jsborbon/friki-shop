@@ -1,20 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(req: NextRequest) {
   try {
-    const productId = Number(params.id);
-    if (isNaN(productId))
+    const id = req.nextUrl.pathname.split("/").pop();
+    if (!id || isNaN(Number(id))) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
+    }
+
+    const productId = Number(id);
 
     const product = await prisma.product.findUnique({
       where: { id: productId },
     });
-    if (!product)
+
+    if (!product) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
+    }
 
     return NextResponse.json(product);
   } catch (error) {
@@ -26,12 +28,14 @@ export async function GET(
   }
 }
 
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(req: NextRequest) {
   try {
-    const productId = Number(params.id);
+    const id = req.nextUrl.pathname.split("/").pop();
+    if (!id || isNaN(Number(id))) {
+      return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
+    }
+
+    const productId = Number(id);
     const body = await req.json();
     const { title, price, image, category, description, metadata } = body;
 
@@ -64,15 +68,14 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(req: NextRequest) {
   try {
-    const productId = Number(params.id);
-    if (isNaN(productId))
+    const id = req.nextUrl.pathname.split("/").pop();
+    if (!id || isNaN(Number(id))) {
       return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
+    }
 
+    const productId = Number(id);
     await prisma.product.delete({ where: { id: productId } });
 
     return NextResponse.json({ message: "Product deleted successfully" });

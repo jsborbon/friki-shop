@@ -23,7 +23,7 @@ export default function ProductCard({ id, title, price, image, description, cate
 
     return (
         <Link href={`/${category.toLowerCase()}/${id}`}>
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg cursor-pointer overflow-hidden transition-transform hover:scale-105">
                 <div className="relative h-48 w-full">
                     <Image
                         src={imgSrc}

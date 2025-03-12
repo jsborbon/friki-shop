@@ -14,7 +14,7 @@ export default function ContentCard({ title, price, description, image, link }: 
 
   return (
     <Link href={link}>
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg cursor-pointer overflow-hidden transition-transform hover:scale-105">
         <div className="relative h-48 w-full">
           <Image
             src={imgSrc}
