@@ -68,22 +68,36 @@ export default function GamingProductPage() {
                         {product.metadata?.platform && <li><b>Platform:</b> {product.metadata.platform}</li>}
                         {product.metadata?.edition && <li><b>Edition:</b> {product.metadata.edition}</li>}
                     </ul>
-                    <motion.button onClick={() => addItem(product)} className="px-8 py-3 bg-blue-500 text-white rounded-lg">
-                        Add to Cart
-                    </motion.button>
-                    <button
-                        onClick={(e) => {
-                            e.preventDefault();
-                            if (isInWishlist(product.id)) {
-                                removeFromWishlist(product.id);
-                            } else {
-                                addToWishlist({ id: product.id, title: product.title, price: product.price, image: product.image, description: product.description, category: product.category });
-                            }
-                        }}
-                        className="p-2 text-red-500 hover:text-red-600 transition-colors"
-                    >
-                        {isInWishlist(product.id) ? <FaHeart className="w-5 h-5" /> : <FaRegHeart className="w-5 h-5" />}
-                    </button>
+                    {/* Action Buttons */}
+                    <div className="flex items-center gap-4">
+                        {/* Add to Cart Button */}
+                        <motion.button
+                            onClick={() => addItem(product)}
+                            className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            <FaCartPlus />
+                            Add to Cart
+                        </motion.button>
+                        <button
+                            onClick={(e) => {
+                                e.preventDefault();
+                                if (isInWishlist(product.id)) {
+                                    removeFromWishlist(product.id);
+                                } else {
+                                    addToWishlist({ id: product.id, title: product.title, price: product.price, image: product.image, description: product.description, category: product.category });
+                                }
+                            }}
+                            className="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+                        >
+                            {isInWishlist(product.id) ? (
+                                <FaHeart className="w-6 h-6 text-red-500" />
+                            ) : (
+                                <FaRegHeart className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                            )}
+                        </button>
+                    </div>
                 </motion.div>
             </div>
         </div>

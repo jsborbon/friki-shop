@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { users } from "@clerk/clerk-sdk-node"; // Clerk SDK for fetching users
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const totalProducts = await prisma.product.count();
     const totalOrders = await prisma.order.count();
@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
       totalProducts,
       totalUsers,
       totalOrders,
-      revenue: revenueData._sum.total || 0, 
+      revenue: revenueData._sum.total || 0,
     });
   } catch (error) {
     console.error("Error fetching admin stats:", error);
