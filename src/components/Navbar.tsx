@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import { useCart } from '@/context/CartContext'
 import { useWishlist } from '@/context/WishlistContext'
-import { FaShoppingCart, FaHeart, FaSearch, FaBars, FaTimes } from 'react-icons/fa'
+import { FaShoppingCart, FaHeart, FaSearch, FaBars, FaTimes, FaUser } from 'react-icons/fa'
 import Image from 'next/image'
 import { Section } from "@/domain/models"
 import { SignOutButton, useUser } from '@clerk/nextjs'
@@ -322,13 +322,7 @@ export default function Navbar() {
                   className="flex flex-col items-center px-4 py-2 text-gray-300 hover:text-white transition duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Image
-                    src={imgSrc}
-                    alt="Perfil"
-                    fill
-                    className="w-6 h-6 rounded-full bg-gray-300"
-                    onError={() => setImgSrc('/images/avatar.png')}
-                  />
+                  <FaUser className="w-6 h-6" />
                   <span className="text-xs mt-1">{isLoaded && user ? "Perfil" : "Iniciar Sesión"}</span>
                 </Link>
               </div>
