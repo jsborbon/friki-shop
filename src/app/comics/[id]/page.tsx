@@ -10,11 +10,12 @@ import { ComicsProduct } from "@/domain/models";
 
 import { FaSpinner, FaHeart, FaRegHeart, FaCartPlus } from 'react-icons/fa'
 import { useUser } from '@clerk/nextjs'
+
 export default function ComicProductPage() {
     const params = useParams();
     const { addItem } = useCart();
     const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist()
-
+  const { user, isLoaded } = useUser()
     const [product, setProduct] = useState<ComicsProduct | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
