@@ -7,10 +7,12 @@ import { useCart } from "@/context/CartContext";
 import { useWishlist } from '@/context/WishlistContext'
 import { motion } from "framer-motion";
 import { MoviesProduct } from "@/domain/models";
-import { FaSpinner, FaHeart, FaRegHeart, FaCartPlus } from 'react-icons/fa'
 
+import { FaSpinner, FaHeart, FaRegHeart, FaCartPlus } from 'react-icons/fa'
+import { useUser } from '@clerk/nextjs'
 export default function MoviesProductPage() {
   const params = useParams();
+  const { user, isLoaded } = useUser()
   const { addItem } = useCart();
   const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist()
 
@@ -83,6 +85,7 @@ export default function MoviesProductPage() {
               <FaCartPlus />
               Add to Cart
             </motion.button>
+            {isLoaded && user && (
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -100,6 +103,7 @@ export default function MoviesProductPage() {
                 <FaRegHeart className="w-6 h-6 text-gray-500 dark:text-gray-400" />
               )}
             </button>
+            )}
           </div>
         </motion.div>
       </div>

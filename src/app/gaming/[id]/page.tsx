@@ -8,9 +8,11 @@ import { useWishlist } from '@/context/WishlistContext'
 import { motion } from "framer-motion";
 import { GamingProduct } from "@/domain/models";
 import { FaSpinner, FaHeart, FaRegHeart, FaCartPlus } from 'react-icons/fa'
+import { useUser } from '@clerk/nextjs'
 
 export default function GamingProductPage() {
     const params = useParams();
+    const { user, isLoaded } = useUser()
     const { addItem } = useCart();
     const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist()
 
@@ -80,23 +82,25 @@ export default function GamingProductPage() {
                             <FaCartPlus />
                             Add to Cart
                         </motion.button>
-                        <button
-                            onClick={(e) => {
-                                e.preventDefault();
-                                if (isInWishlist(product.id)) {
-                                    removeFromWishlist(product.id);
-                                } else {
-                                    addToWishlist({ id: product.id, title: product.title, price: product.price, image: product.image, description: product.description, category: product.category });
-                                }
-                            }}
-                            className="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
-                        >
-                            {isInWishlist(product.id) ? (
-                                <FaHeart className="w-6 h-6 text-red-500" />
-                            ) : (
-                                <FaRegHeart className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                            )}
-                        </button>
+                        {isLoaded && user && (
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    if (isInWishlist(product.id)) {
+                                        removeFromWishlist(product.id);
+                                    } else {
+                                        addToWishlist({ id: product.id, title: product.title, price: product.price, image: product.image, description: product.description, category: product.category });
+                                    }
+                                }}
+                                className="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+                            >
+                                {isInWishlist(product.id) ? (
+                                    <FaHeart className="w-6 h-6 text-red-500" />
+                                ) : (
+                                    <FaRegHeart className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                                )}
+                            </button>
+                        )}
                     </div>
                 </motion.div>
             </div>
