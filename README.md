@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Friki Shop  
 
-## Getting Started
+**Friki Shop** es una plataforma de comercio electrónico desarrollada con **Next.js**, **Prisma** y **PostgreSQL**, pensada para los verdaderos amantes del anime, los cómics y los videojuegos. Ofrece una experiencia fluida y envolvente para explorar, comprar y gestionar productos de tus franquicias favoritas.  
 
-First, run the development server:
+## ✨ Características Principales  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🔥 **Exploración de Productos**  
+📌 Descubre una amplia colección de productos organizados por categorías: **Anime, Cómics, Gaming** y más.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🔍 **Búsqueda y Filtros Avanzados**  
+🎯 Encuentra lo que necesitas fácilmente con herramientas de búsqueda inteligente y filtros detallados.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🛒 **Carrito y Lista de Deseos**  
+💖 Guarda tus productos favoritos en la **wishlist** o agrégalos al carrito para comprarlos más tarde.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🎛️ **Panel de Administración**  
+🛠️ Los administradores pueden gestionar el catálogo con opciones para **añadir, actualizar y eliminar productos**.  
 
-## Learn More
+📱 **Diseño Responsivo y Animado**  
+💡 Interfaz moderna, intuitiva y adaptable a cualquier dispositivo, con **animaciones fluidas** gracias a Framer Motion.  
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Tecnologías Utilizadas  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔹 **Next.js** → Framework de React para aplicaciones rápidas y escalables.  
+🔹 **Prisma** → ORM moderno para interactuar con la base de datos de forma eficiente.  
+🔹 **PostgreSQL** → Base de datos robusta y escalable para almacenar productos y usuarios.  
+🔹 **React Icons** → Conjunto de iconos elegantes para mejorar la interfaz.  
+🔹 **Framer Motion** → Animaciones suaves y transiciones dinámicas para una experiencia envolvente.  
