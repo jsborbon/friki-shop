@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 import { WishlistItem } from '@/domain/models'
 
 type WishlistContextType = {
@@ -13,7 +13,20 @@ type WishlistContextType = {
 const WishlistContext = createContext<WishlistContextType | undefined>(undefined)
 
 export function WishlistProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<WishlistItem[]>([])
+  // Initialize state from localStorage if available
+  const [items, setItems] = useState<WishlistItem[]>(() => {
+    // Check if we're in the browser environment
+    if (typeof window !== 'undefined') {
+      const savedWishlist = localStorage.getItem('wishlist')
+      return savedWishlist ? JSON.parse(savedWishlist) : []
+    }
+    return []
+  })
+
+  // Update localStorage whenever items change
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(items))
+  }, [items])
 
   const addItem = (newItem: WishlistItem) => {
     setItems(currentItems => {

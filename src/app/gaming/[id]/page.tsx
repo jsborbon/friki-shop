@@ -4,17 +4,26 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from '@/context/WishlistContext'
 import { motion } from "framer-motion";
 import { GamingProduct } from "@/domain/models";
+import { FaSpinner, FaHeart, FaRegHeart, FaCartPlus } from 'react-icons/fa'
 
 export default function GamingProductPage() {
     const params = useParams();
     const { addItem } = useCart();
+    const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist()
 
     const [product, setProduct] = useState<GamingProduct | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [imgSrc, setImgSrc] = useState(product?.image ?? '/images/not-found.jpg');
+    const [imgSrc, setImgSrc] = useState<string>('/images/not-found.jpg');
+
+    useEffect(() => {
+        if (product?.image) {
+            setImgSrc(product.image);
+        }
+    }, [product?.image]);
 
     useEffect(() => {
         if (!params.id) return;
@@ -37,7 +46,11 @@ export default function GamingProductPage() {
             });
     }, [params.id]);
 
-    if (loading) return <div className="text-center p-8">Loading...</div>;
+    if (loading) {
+        return (<div className="flex items-center justify-center p-8 h-64">
+            <FaSpinner className="animate-spin text-3xl text-blue-500" />
+        </div>)
+    }
     if (error || !product) return <div className="text-center p-8 text-red-500">Product Not Found</div>;
 
     return (
@@ -58,6 +71,19 @@ export default function GamingProductPage() {
                     <motion.button onClick={() => addItem(product)} className="px-8 py-3 bg-blue-500 text-white rounded-lg">
                         Add to Cart
                     </motion.button>
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            if (isInWishlist(product.id)) {
+                                removeFromWishlist(product.id);
+                            } else {
+                                addToWishlist({ id: product.id, title: product.title, price: product.price, image: product.image, description: product.description, category: product.category });
+                            }
+                        }}
+                        className="p-2 text-red-500 hover:text-red-600 transition-colors"
+                    >
+                        {isInWishlist(product.id) ? <FaHeart className="w-5 h-5" /> : <FaRegHeart className="w-5 h-5" />}
+                    </button>
                 </motion.div>
             </div>
         </div>

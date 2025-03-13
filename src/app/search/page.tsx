@@ -6,6 +6,7 @@ import ProductGrid from '@/components/ProductGrid'
 import SearchBar from '@/components/SearchBar'
 import ProductFilter from '@/components/ProductFilter'
 import { ProductWithCategory } from '@/domain/models'
+import { FaSpinner } from 'react-icons/fa'
 
 function SearchContent() {
     const searchParams = useSearchParams()
@@ -30,7 +31,7 @@ function SearchContent() {
                 const filteredResults = products.filter(product => (
                     product.price >= filters.minPrice &&
                     product.price <= filters.maxPrice &&
-                    (filters.category === 'all' || product.category === filters.category)
+                    (filters.category === 'all' || product.category.toLowerCase() === filters.category)
                 ))
 
                 setFilteredProducts(filteredResults)
@@ -45,13 +46,16 @@ function SearchContent() {
         fetchProducts()
     }, [query, filters])
 
+    const handleSearch = (searchQuery: string) => {
+        const newSearchParams = new URLSearchParams(window.location.search)
+        newSearchParams.set('q', searchQuery)
+        window.history.replaceState(null, '', `${window.location.pathname}?${newSearchParams.toString()}`)
+    }
+
     return (
         <div className="container mx-auto p-8">
-            <SearchBar onSearch={searchQuery => {
-                const newSearchParams = new URLSearchParams(window.location.search)
-                newSearchParams.set('q', searchQuery)
-                window.history.replaceState(null, '', `${window.location.pathname}?${newSearchParams.toString()}`)
-            }} />
+            {/* Pass the query to SearchBar */}
+            <SearchBar onSearch={handleSearch} initialQuery={query} />
 
             <div className="grid md:grid-cols-[300px_1fr] gap-8">
                 <aside>
@@ -60,8 +64,8 @@ function SearchContent() {
 
                 <main>
                     {loading ? (
-                        <div className="text-center py-8">
-                            <h2 className="text-xl font-semibold mb-2">Loading...</h2>
+                        <div className="flex items-center justify-center p-8 h-64">
+                            <FaSpinner className="animate-spin text-3xl text-blue-500" />
                         </div>
                     ) : error ? (
                         <div className="text-center py-8">

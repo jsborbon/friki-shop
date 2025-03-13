@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 interface ContentCardProps {
   title: string
   price: number
@@ -10,7 +10,13 @@ interface ContentCardProps {
 }
 
 export default function ContentCard({ title, price, description, image, link }: ContentCardProps) {
-  const [imgSrc, setImgSrc] = useState(image ?? '/images/not-found.jpg');
+  const [imgSrc, setImgSrc] = useState<string>('/images/not-found.jpg');
+
+  useEffect(() => {
+    if (image) {
+      setImgSrc(image);
+    }
+  }, [image]);
 
   return (
     <Link href={link}>

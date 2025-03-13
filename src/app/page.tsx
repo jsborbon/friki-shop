@@ -5,12 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Section } from "@/domain/models";
-
+import { FaSpinner } from "react-icons/fa";
 
 export default function Home() {
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // State to handle image fallbacks
+  const [imageSources, setImageSources] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
     const fetchSections = async () => {
@@ -20,6 +23,13 @@ export default function Home() {
 
         const data: Section[] = await response.json();
         setSections(data);
+
+        // Initialize imageSources with default images
+        const initialSources: { [key: string]: string } = {};
+        data.forEach((item) => {
+          initialSources[item.id] = item.image;
+        });
+        setImageSources(initialSources);
       } catch (err) {
         console.error("Error fetching sections:", err);
         setError(err instanceof Error ? err.message : "Unknown error");
@@ -33,8 +43,8 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-white">
-        <h2 className="text-2xl font-bold">Loading...</h2>
+      <div className="flex items-center justify-center p-8 h-64">
+        <FaSpinner className="animate-spin text-3xl text-blue-500" />
       </div>
     );
   }
@@ -70,10 +80,17 @@ export default function Home() {
               <Link href={section.link} className="block">
                 <div className="relative h-72 w-full">
                   <Image
-                    src={section.image}
+                    src={imageSources[section.id] || "/images/not-found.jpg"}
                     alt={section.title}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    onError={() => {
+                      setImageSources((prev) => ({
+                        ...prev,
+                        [section.id]: "/images/not-found.jpg",
+                      }));
+                    }}
+                    unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 </div>

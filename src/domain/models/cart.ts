@@ -1,13 +1,5 @@
-/**
- * Cart-related type definitions
- */
+import { ProductWithCategory } from "./product";
 
-import { Product } from "./product";
-
-// Cart item with quantity
-export interface CartItem extends Product {
+export interface CartItem extends ProductWithCategory {
   quantity: number;
 }
-
-// Type for adding an item to cart (without quantity)
-export type CartItemInput = Omit<CartItem, "quantity">;

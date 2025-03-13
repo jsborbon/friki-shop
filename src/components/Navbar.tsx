@@ -4,33 +4,26 @@ import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
 import { useCart } from '@/context/CartContext'
 import { useWishlist } from '@/context/WishlistContext'
-import { FaShoppingCart, FaHeart, FaSearch, FaUserCircle } from 'react-icons/fa'
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  SignOutButton
-} from '@clerk/nextjs'
+import { FaShoppingCart, FaHeart, FaSearch, FaUser } from 'react-icons/fa'
 import Image from 'next/image'
-import { Section } from "@/domain/models";
+import { Section } from "@/domain/models"
+import { useUser, SignOutButton } from '@clerk/nextjs' // Import Clerk's SignOutButton
 
 export default function Navbar() {
   const [sections, setSections] = useState<Section[]>([])
-  const [isOpen, setIsOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
-
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
 
   const { items } = useCart()
   const { items: wishlistItems } = useWishlist()
+  const { user, isLoaded } = useUser()
 
-  const mobileMenuRef = useRef(null)
-  const searchInputRef = useRef(null)
-  const userMenuRef = useRef(null)
+  const [imgSrc, setImgSrc] = useState(user?.imageUrl ?? '/images/avatar.png')
 
-  // Fetch sections from API
+  const searchInputRef = useRef<HTMLInputElement | null>(null)
+  const profileMenuRef = useRef<HTMLDivElement | null>(null)
+
   useEffect(() => {
     const fetchSections = async () => {
       try {
@@ -45,26 +38,27 @@ export default function Navbar() {
     fetchSections()
   }, [])
 
-  // Close menus when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (mobileMenuRef.current && !(mobileMenuRef.current as Node).contains(event.target as Node)) {
-        setIsOpen(false)
-      }
-      if (userMenuRef.current && !(userMenuRef.current as Node).contains(event.target as Node)) {
-        setIsUserMenuOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
-
-  // Focus search input when opened
   useEffect(() => {
     if (isSearchOpen && searchInputRef.current) {
-      (searchInputRef.current as HTMLInputElement).focus()
+      searchInputRef.current.focus()
     }
   }, [isSearchOpen])
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        profileMenuRef.current &&
+        !profileMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsProfileMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -96,7 +90,10 @@ export default function Navbar() {
             ))}
 
             {/* Search */}
-            <button onClick={() => setIsSearchOpen(!isSearchOpen)} className="p-2 rounded-full hover:bg-gray-700 transition duration-200">
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="p-2 rounded-full hover:bg-gray-700 transition duration-200"
+            >
               <FaSearch className="w-5 h-5" />
             </button>
 
@@ -111,58 +108,71 @@ export default function Navbar() {
             </Link>
 
             {/* Wishlist */}
-            <Link href="/wishlist" className="p-2 rounded-full hover:bg-gray-700 transition duration-200 relative">
-              <FaHeart className="w-5 h-5" />
-              {wishlistItems.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                  {wishlistItems.length}
-                </span>
-              )}
-            </Link>
-
-            {/* Authentication & Profile */}
-            <SignedOut>
-              <div className="flex items-center space-x-3">
-                <SignInButton>
-                  <button className="px-3 py-1.5 bg-transparent border border-blue-500 text-blue-400 rounded-md hover:bg-blue-500 hover:text-white transition duration-200">
-                    Sign In
-                  </button>
-                </SignInButton>
-                <SignUpButton>
-                  <button className="px-3 py-1.5 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200">
-                    Sign Up
-                  </button>
-                </SignUpButton>
-              </div>
-            </SignedOut>
-
-            <SignedIn>
-              <div className="relative" ref={userMenuRef}>
-                <button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className="p-2 rounded-full hover:bg-gray-700 transition duration-200">
-                  <FaUserCircle className="w-6 h-6" />
-                </button>
-                {isUserMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-gray-800 shadow-lg rounded-md overflow-hidden">
-                    <Link href="/profile" className="block px-4 py-2 hover:bg-gray-700">
-                      Profile
-                    </Link>
-                    <div className="border-t border-gray-700"></div>
-                    <SignOutButton>
-                      <button className="w-full text-left px-4 py-2 hover:bg-gray-700">
-                        Sign Out
-                      </button>
-                    </SignOutButton>
-                  </div>
+            {isLoaded && user && (
+              <Link href="/wishlist" className="p-2 rounded-full hover:bg-gray-700 transition duration-200 relative">
+                <FaHeart className="w-5 h-5" />
+                {wishlistItems.length > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                    {wishlistItems.length}
+                  </span>
                 )}
-              </div>
-            </SignedIn>
-          </div>
+              </Link>
+            )}
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-300 hover:text-white">
-              ☰
-            </button>
+            {/* User Profile */}
+            <div className="relative">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setIsProfileMenuOpen(prev => !prev)
+                }}
+                className="p-2 rounded-full hover:bg-gray-700 transition duration-200 flex items-center"
+              >
+                {isLoaded && user ? (
+                  <Image
+                    src={imgSrc}
+                    alt="Profile"
+                    width={32}
+                    height={32}
+                    className="rounded-full object-cover"
+                    onError={() => setImgSrc('/images/avatar.png')}
+                  />
+                ) : (
+                  <FaUser className="w-5 h-5" />
+                )}
+              </button>
+
+              {/* Profile Dropdown Menu */}
+              {isProfileMenuOpen && (
+                <div
+                  ref={profileMenuRef}
+                  className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 text-gray-800"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {isLoaded && user ? (
+                    <>
+                      <Link href="/dashboard" className="block px-4 py-2 text-sm hover:bg-gray-100">
+                        Dashboard
+                      </Link>
+                      <SignOutButton>
+                        <button className="block px-4 py-2 text-sm w-full text-left hover:bg-gray-100 text-red-500">
+                          Sign Out
+                        </button>
+                      </SignOutButton>
+                    </>
+                  ) : (
+                    <>
+                      <Link href="/sign-in" className="block px-4 py-2 text-sm hover:bg-gray-100">
+                        Sign In
+                      </Link>
+                      <Link href="/sign-up" className="block px-4 py-2 text-sm hover:bg-gray-100">
+                        Sign Up
+                      </Link>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Section } from "@/domain/models";
+import { FaSpinner } from "react-icons/fa";
 
 interface ProductFilterProps {
   onFilterChange: (filters: FilterValues) => void
@@ -51,8 +52,8 @@ export default function ProductFilter({ onFilterChange }: ProductFilterProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-white">
-        <h2 className="text-2xl font-bold">Loading...</h2>
+      <div className="flex items-center justify-center p-8 h-64">
+        <FaSpinner className="animate-spin text-3xl text-blue-500" />
       </div>
     );
   }

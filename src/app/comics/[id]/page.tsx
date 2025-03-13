@@ -4,17 +4,26 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from '@/context/WishlistContext'
 import { motion } from "framer-motion";
 import { ComicsProduct } from "@/domain/models";
+import { FaSpinner, FaHeart, FaRegHeart, FaCartPlus } from 'react-icons/fa'
 
 export default function ComicProductPage() {
     const params = useParams();
     const { addItem } = useCart();
+    const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist()
 
     const [product, setProduct] = useState<ComicsProduct | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [imgSrc, setImgSrc] = useState(product?.image ?? '/images/not-found.jpg');
+    const [imgSrc, setImgSrc] = useState<string>('/images/not-found.jpg');
+
+    useEffect(() => {
+        if (product?.image) {
+            setImgSrc(product.image);
+        }
+    }, [product?.image]);
 
     useEffect(() => {
         if (!params.id) return;
@@ -37,7 +46,11 @@ export default function ComicProductPage() {
             });
     }, [params.id]);
 
-    if (loading) return <div className="text-center p-8">Loading...</div>;
+    if (loading) {
+        return (<div className="flex items-center justify-center p-8 h-64">
+            <FaSpinner className="animate-spin text-3xl text-blue-500" />
+        </div>)
+    }
     if (error || !product) return <div className="text-center p-8 text-red-500">Product Not Found</div>;
 
     return (
@@ -55,10 +68,37 @@ export default function ComicProductPage() {
                         {product.metadata?.issueNumber && <li><b>Issue Number:</b> {product.metadata.issueNumber}</li>}
                         {product.metadata?.publisher && <li><b>Publisher:</b> {product.metadata.publisher}</li>}
                     </ul>
-                    <motion.button onClick={() => addItem(product)} className="px-8 py-3 bg-blue-500 text-white rounded-lg">
-                        Add to Cart
-                    </motion.button>
-                </motion.div>
+                    {/* Action Buttons */}
+          <div className="flex items-center gap-4">
+            {/* Add to Cart Button */}
+            <motion.button
+              onClick={() => addItem(product)}
+              className="flex items-center gap-2 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaCartPlus />
+              Add to Cart
+            </motion.button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                if (isInWishlist(product.id)) {
+                  removeFromWishlist(product.id);
+                } else {
+                  addToWishlist({ id: product.id, title: product.title, price: product.price, image: product.image, description: product.description, category: product.category });
+                }
+              }}
+              className="p-3 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+            >
+              {isInWishlist(product.id) ? (
+                <FaHeart className="w-6 h-6 text-red-500" />
+              ) : (
+                <FaRegHeart className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+              )}
+            </button>
+          </div>
+        </motion.div>
             </div>
         </div>
     );

@@ -1,16 +1,24 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
 interface SearchBarProps {
   onSearch: (query: string) => void
+  initialQuery: string
 }
 
-export default function SearchBar({ onSearch }: SearchBarProps) {
-  const [query, setQuery] = useState('')
+export default function SearchBar({ onSearch, initialQuery }: SearchBarProps) {
+  const [query, setQuery] = useState(initialQuery)
+
+  useEffect(() => {
+    setQuery(initialQuery) // Sync query when URL changes
+  }, [initialQuery])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    onSearch(query)
+    if (query.trim()) {
+      onSearch(query)
+    }
   }
 
   return (

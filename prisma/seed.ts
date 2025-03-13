@@ -4,570 +4,570 @@ const prisma = new PrismaClient();
 
 const products: Prisma.ProductCreateInput[] = [
   // Anime Products
- // Anime Products
- {
-  title: "Attack on Titan",
-  image: "/images/animes/aot.jpg",
-  description:
-    "Humanity fights for survival against giant humanoid creatures.",
-  price: 19.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Region 2",
-    episodes: 25,
+  // Anime Products
+  {
+    title: "Attack on Titan",
+    image: "/images/animes/aot.jpg",
+    description:
+      "Humanity fights for survival against giant humanoid creatures.",
+    price: 19.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Region 2",
+      episodes: 25,
+    },
   },
-},
-{
-  title: "Demon Slayer",
-  image: "/images/animes/demon-slayer.jpg",
-  description: "A young boy fights demons to save his sister and humanity.",
-  price: 17.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Region 1",
-    episodes: 26,
+  {
+    title: "Demon Slayer",
+    image: "/images/animes/demon-slayer.jpg",
+    description: "A young boy fights demons to save his sister and humanity.",
+    price: 17.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Region 1",
+      episodes: 26,
+    },
   },
-},
-{
-  title: "Naruto Shippuden",
-  image: "/images/animes/naruto-shippuden.png",
-  description:
-    "La historia de Naruto Uzumaki, un ninja adolescente en busca de reconocimiento y su sueño de convertirse en Hokage.",
-  price: 29.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 500,
+  {
+    title: "Naruto Shippuden",
+    image: "/images/animes/naruto-shippuden.png",
+    description:
+      "La historia de Naruto Uzumaki, un ninja adolescente en busca de reconocimiento y su sueño de convertirse en Hokage.",
+    price: 29.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 500,
+    },
   },
-},
-{
-  title: "One Piece",
-  image: "/images/animes/onePiece.jpg",
-  description:
-    "Monkey D. Luffy y su tripulación buscan el legendario tesoro One Piece para convertirse en el Rey de los Piratas.",
-  price: 34.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 2",
-    episodes: 1000,
+  {
+    title: "One Piece",
+    image: "/images/animes/onePiece.jpg",
+    description:
+      "Monkey D. Luffy y su tripulación buscan el legendario tesoro One Piece para convertirse en el Rey de los Piratas.",
+    price: 34.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 2",
+      episodes: 1000,
+    },
   },
-},
-{
-  title: "My Hero Academia",
-  image: "/images/animes/my-hero-academia.png",
-  description:
-    "En un mundo donde casi todos tienen poderes, un joven sin habilidades sueña con ser un héroe.",
-  price: 24.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 88,
+  {
+    title: "My Hero Academia",
+    image: "/images/animes/my-hero-academia.png",
+    description:
+      "En un mundo donde casi todos tienen poderes, un joven sin habilidades sueña con ser un héroe.",
+    price: 24.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 88,
+    },
   },
-},
-{
-  title: "Fullmetal Alchemist: Brotherhood",
-  image: "/images/animes/fullmetal-alchemist-brotherhood.png",
-  description:
-    "Dos hermanos alquimistas buscan la Piedra Filosofal para restaurar sus cuerpos después de un fallido experimento.",
-  price: 29.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 64,
+  {
+    title: "Fullmetal Alchemist: Brotherhood",
+    image: "/images/animes/fullmetal-alchemist-brotherhood.png",
+    description:
+      "Dos hermanos alquimistas buscan la Piedra Filosofal para restaurar sus cuerpos después de un fallido experimento.",
+    price: 29.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 64,
+    },
   },
-},
-{
-  title: "Death Note",
-  image: "/images/animes/death-note.png",
-  description:
-    "Un estudiante de secundaria encuentra un cuaderno que le permite matar a cualquiera con solo escribir su nombre.",
-  price: 19.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 37,
+  {
+    title: "Death Note",
+    image: "/images/animes/death-note.png",
+    description:
+      "Un estudiante de secundaria encuentra un cuaderno que le permite matar a cualquiera con solo escribir su nombre.",
+    price: 19.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 37,
+    },
   },
-},
-{
-  title: "Dragon Ball Z",
-  image: "/images/animes/dragonballZ.jpg",
-  description:
-    "Goku y sus amigos defienden la Tierra de poderosos enemigos en esta clásica serie de acción.",
-  price: 39.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 291,
+  {
+    title: "Dragon Ball Z",
+    image: "/images/animes/dragonballZ.jpg",
+    description:
+      "Goku y sus amigos defienden la Tierra de poderosos enemigos en esta clásica serie de acción.",
+    price: 39.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 291,
+    },
   },
-},
-{
-  title: "Sword Art Online",
-  image: "/images/animes/SwordArtOnline.png",
-  description:
-    "Jugadores quedan atrapados en un videojuego de realidad virtual y deben luchar para sobrevivir.",
-  price: 24.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 25,
+  {
+    title: "Sword Art Online",
+    image: "/images/animes/SwordArtOnline.png",
+    description:
+      "Jugadores quedan atrapados en un videojuego de realidad virtual y deben luchar para sobrevivir.",
+    price: 24.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 25,
+    },
   },
-},
-{
-  title: "Tokyo Ghoul",
-  image: "/images/animes/tokyo-ghoul.png",
-  description:
-    "Un estudiante se convierte en mitad ghoul y debe adaptarse a su nueva vida.",
-  price: 19.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 12,
+  {
+    title: "Tokyo Ghoul",
+    image: "/images/animes/tokyo-ghoul.png",
+    description:
+      "Un estudiante se convierte en mitad ghoul y debe adaptarse a su nueva vida.",
+    price: 19.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 12,
+    },
   },
-},
-{
-  title: "Neon Genesis Evangelion",
-  image: "/images/animes/neon-genesis-evangelion.png",
-  description:
-    "Adolescentes pilotan mechas para proteger a la humanidad de seres misteriosos.",
-  price: 29.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 26,
+  {
+    title: "Neon Genesis Evangelion",
+    image: "/images/animes/neon-genesis-evangelion.png",
+    description:
+      "Adolescentes pilotan mechas para proteger a la humanidad de seres misteriosos.",
+    price: 29.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 26,
+    },
   },
-},
-{
-  title: "Hunter x Hunter",
-  image: "/images/animes/hunter-x-hunter-2011.png",
-  description:
-    "Un joven busca a su padre y se convierte en cazador en un mundo lleno de aventuras.",
-  price: 34.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 148,
+  {
+    title: "Hunter x Hunter",
+    image: "/images/animes/hunter-x-hunter-2011.png",
+    description:
+      "Un joven busca a su padre y se convierte en cazador en un mundo lleno de aventuras.",
+    price: 34.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 148,
+    },
   },
-},
-{
-  title: "Fairy Tail",
-  image: "/images/animes/FairyTail.png",
-  description:
-    "Un gremio de magos realiza misiones y enfrenta poderosos enemigos.",
-  price: 29.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 175,
+  {
+    title: "Fairy Tail",
+    image: "/images/animes/FairyTail.png",
+    description:
+      "Un gremio de magos realiza misiones y enfrenta poderosos enemigos.",
+    price: 29.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 175,
+    },
   },
-},
-{
-  title: "Bleach",
-  image: "/images/animes/bleach-thousand-year-blood-war.png",
-  description:
-    "Ichigo Kurosaki obtiene poderes de Segador de Almas y protege a los vivos de los espíritus malignos.",
-  price: 29.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 366,
+  {
+    title: "Bleach",
+    image: "/images/animes/bleach-thousand-year-blood-war.png",
+    description:
+      "Ichigo Kurosaki obtiene poderes de Segador de Almas y protege a los vivos de los espíritus malignos.",
+    price: 29.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 366,
+    },
   },
-},
-{
-  title: "Cowboy Bebop",
-  image: "/images/animes/cowboy-bebop.png",
-  description:
-    "Un grupo de cazarrecompensas viaja por el espacio en busca de fugitivos en un futuro distópico.",
-  price: 24.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 26,
+  {
+    title: "Cowboy Bebop",
+    image: "/images/animes/cowboy-bebop.png",
+    description:
+      "Un grupo de cazarrecompensas viaja por el espacio en busca de fugitivos en un futuro distópico.",
+    price: 24.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 26,
+    },
   },
-},
-{
-  title: "Steins;Gate",
-  image: "/images/animes/steins-gate.png",
-  description:
-    "Un grupo de amigos descubre accidentalmente cómo enviar mensajes al pasado, alterando el curso de la historia.",
-  price: 19.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 24,
+  {
+    title: "Steins;Gate",
+    image: "/images/animes/steins-gate.png",
+    description:
+      "Un grupo de amigos descubre accidentalmente cómo enviar mensajes al pasado, alterando el curso de la historia.",
+    price: 19.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 24,
+    },
   },
-},
-{
-  title: "One Punch Man",
-  image: "/images/animes/one-punch-man.png",
-  description:
-    "Saitama, un héroe capaz de derrotar a cualquier enemigo con un solo golpe, busca un oponente digno.",
-  price: 19.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 12,
+  {
+    title: "One Punch Man",
+    image: "/images/animes/one-punch-man.png",
+    description:
+      "Saitama, un héroe capaz de derrotar a cualquier enemigo con un solo golpe, busca un oponente digno.",
+    price: 19.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 12,
+    },
   },
-},
-{
-  title: "Code Geass",
-  image: "/images/animes/code-geass-lelouch-of-the-rebell.png",
-  description:
-    "Un exiliado príncipe obtiene un poder misterioso y lidera una rebelión contra un imperio tiránico.",
-  price: 24.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 25,
+  {
+    title: "Code Geass",
+    image: "/images/animes/code-geass-lelouch-of-the-rebell.png",
+    description:
+      "Un exiliado príncipe obtiene un poder misterioso y lidera una rebelión contra un imperio tiránico.",
+    price: 24.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 25,
+    },
   },
-},
-{
-  title: "Your Lie in April",
-  image: "/images/animes/shigatsu-wa-kimi-no-uso.png",
-  description:
-    "Un pianista prodigio redescubre su amor por la música gracias a una violinista extrovertida.",
-  price: 19.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 22,
+  {
+    title: "Your Lie in April",
+    image: "/images/animes/shigatsu-wa-kimi-no-uso.png",
+    description:
+      "Un pianista prodigio redescubre su amor por la música gracias a una violinista extrovertida.",
+    price: 19.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 22,
+    },
   },
-},
-{
-  title: "Clannad: After Story",
-  image: "/images/animes/clannad.png",
-  description:
-    "Una emotiva historia sobre la vida, el amor y las dificultades de la edad adulta.",
-  price: 24.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 24,
+  {
+    title: "Clannad: After Story",
+    image: "/images/animes/clannad.png",
+    description:
+      "Una emotiva historia sobre la vida, el amor y las dificultades de la edad adulta.",
+    price: 24.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 24,
+    },
   },
-},
-{
-  title: "Re:Zero - Starting Life in Another World",
-  image: "/images/animes/re-zero.png",
-  description:
-    "Un joven es transportado a un mundo de fantasía y descubre que tiene la habilidad de regresar en el tiempo al morir.",
-  price: 24.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 25,
+  {
+    title: "Re:Zero - Starting Life in Another World",
+    image: "/images/animes/re-zero.png",
+    description:
+      "Un joven es transportado a un mundo de fantasía y descubre que tiene la habilidad de regresar en el tiempo al morir.",
+    price: 24.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 25,
+    },
   },
-},
-{
-  title: "The Seven Deadly Sins",
-  image: "/images/animes/the-seven-deadly-sins.png",
-  description:
-    "Un grupo de caballeros legendarios debe reunirse para salvar al reino de las fuerzas del mal.",
-  price: 29.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 24,
+  {
+    title: "The Seven Deadly Sins",
+    image: "/images/animes/the-seven-deadly-sins.png",
+    description:
+      "Un grupo de caballeros legendarios debe reunirse para salvar al reino de las fuerzas del mal.",
+    price: 29.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 24,
+    },
   },
-},
-{
-  title: "Fate/Zero",
-  image: "/images/animes/fate-zero.png",
-  description:
-    "Siete magos convocan a héroes legendarios para luchar en una batalla por el Santo Grial.",
-  price: 24.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 25,
+  {
+    title: "Fate/Zero",
+    image: "/images/animes/fate-zero.png",
+    description:
+      "Siete magos convocan a héroes legendarios para luchar en una batalla por el Santo Grial.",
+    price: 24.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 25,
+    },
   },
-},
-{
-  title: "Anohana: The Flower We Saw That Day",
-  image: "/images/animes/ano-hi-mita-hana-no-namae-o-boku.png",
-  description:
-    "Un grupo de amigos de la infancia se reúne para ayudar al espíritu de una amiga fallecida a encontrar la paz.",
-  price: 19.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 11,
+  {
+    title: "Anohana: The Flower We Saw That Day",
+    image: "/images/animes/ano-hi-mita-hana-no-namae-o-boku.png",
+    description:
+      "Un grupo de amigos de la infancia se reúne para ayudar al espíritu de una amiga fallecida a encontrar la paz.",
+    price: 19.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 11,
+    },
   },
-},
-{
-  title: "Erased",
-  image: "/images/animes/desaparecido.png",
-  description:
-    "Un hombre viaja al pasado para evitar la muerte de su madre y resolver una serie de secuestros.",
-  price: 19.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 12,
+  {
+    title: "Erased",
+    image: "/images/animes/desaparecido.png",
+    description:
+      "Un hombre viaja al pasado para evitar la muerte de su madre y resolver una serie de secuestros.",
+    price: 19.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 12,
+    },
   },
-},
-{
-  title: "Black Clover",
-  image: "/images/animes/black-clover.png",
-  description:
-    "Asta, un joven sin habilidades mágicas, sueña con convertirse en el Rey Mago de su reino.",
-  price: 29.99,
-  category: "ANIME",
-  metadata: {
-    regionCode: "Región 1",
-    episodes: 170,
+  {
+    title: "Black Clover",
+    image: "/images/animes/black-clover.png",
+    description:
+      "Asta, un joven sin habilidades mágicas, sueña con convertirse en el Rey Mago de su reino.",
+    price: 29.99,
+    category: "ANIME",
+    metadata: {
+      regionCode: "Región 1",
+      episodes: 170,
+    },
   },
-},
 
-// Comics Products
-{
-  title: "Spider-Man: Miles Morales",
-  image: "/images/comics/miles-morales.jpg",
-  description:
-    "Follow the adventures of Miles Morales as he takes up the mantle of Spider-Man.",
-  price: 12.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Marvel",
+  // Comics Products
+  {
+    title: "Spider-Man: Miles Morales",
+    image: "/images/comics/miles-morales.jpg",
+    description:
+      "Follow the adventures of Miles Morales as he takes up the mantle of Spider-Man.",
+    price: 12.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Marvel",
+    },
   },
-},
-{
-  title: "Batman: The Dark Knight Returns",
-  image: "/images/comics/dark-knight.jpg",
-  description:
-    "An aging Batman returns from retirement to fight crime in a dark future Gotham.",
-  price: 14.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "DC Comics",
+  {
+    title: "Batman: The Dark Knight Returns",
+    image: "/images/comics/dark-knight.jpg",
+    description:
+      "An aging Batman returns from retirement to fight crime in a dark future Gotham.",
+    price: 14.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "DC Comics",
+    },
   },
-},
-{
-  title: "Watchmen",
-  image: "/images/comics/watchmen.jpg",
-  description:
-    "A groundbreaking graphic novel that deconstructs superhero mythology.",
-  price: 16.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "DC Comics",
+  {
+    title: "Watchmen",
+    image: "/images/comics/watchmen.jpg",
+    description:
+      "A groundbreaking graphic novel that deconstructs superhero mythology.",
+    price: 16.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "DC Comics",
+    },
   },
-},
-{
-  title: "X-Men: Days of Future Past",
-  image: "/images/comics/DaysOfFuturePast.jpg",
-  description:
-    "Los X-Men deben evitar un futuro distópico en el que los mutantes son cazados.",
-  price: 13.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Marvel",
+  {
+    title: "X-Men: Days of Future Past",
+    image: "/images/comics/DaysOfFuturePast.jpg",
+    description:
+      "Los X-Men deben evitar un futuro distópico en el que los mutantes son cazados.",
+    price: 13.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Marvel",
+    },
   },
-},
-{
-  title: "Saga",
-  image: "/images/comics/Saga.png",
-  description:
-    "Una épica historia de ciencia ficción y fantasía que sigue a una familia en guerra.",
-  price: 19.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Image Comics",
+  {
+    title: "Saga",
+    image: "/images/comics/Saga.png",
+    description:
+      "Una épica historia de ciencia ficción y fantasía que sigue a una familia en guerra.",
+    price: 19.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Image Comics",
+    },
   },
-},
-{
-  title: "The Sandman",
-  image: "/images/comics/Sandman.jpg",
-  description: "Una serie que explora el mundo de los sueños y la mitología.",
-  price: 17.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Vertigo",
+  {
+    title: "The Sandman",
+    image: "/images/comics/Sandman.jpg",
+    description: "Una serie que explora el mundo de los sueños y la mitología.",
+    price: 17.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Vertigo",
+    },
   },
-},
-{
-  title: "Black Panther: A Nation Under Our Feet",
-  image: "/images/comics/BlackPantherANationUnderOurFeet.jpg",
-  description:
-    "T'Challa enfrenta desafíos políticos y amenazas internas en Wakanda.",
-  price: 15.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Marvel",
+  {
+    title: "Black Panther: A Nation Under Our Feet",
+    image: "/images/comics/BlackPantherANationUnderOurFeet.jpg",
+    description:
+      "T'Challa enfrenta desafíos políticos y amenazas internas en Wakanda.",
+    price: 15.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Marvel",
+    },
   },
-},
-{
-  title: "Superman: Red Son",
-  image: "/images/comics/SupermanRedSon.png",
-  description:
-    "Una historia alternativa donde Superman aterriza en la Unión Soviética en lugar de Kansas.",
-  price: 14.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "DC Comics",
+  {
+    title: "Superman: Red Son",
+    image: "/images/comics/SupermanRedSon.png",
+    description:
+      "Una historia alternativa donde Superman aterriza en la Unión Soviética en lugar de Kansas.",
+    price: 14.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "DC Comics",
+    },
   },
-},
-{
-  title: "The Walking Dead: Compendium One",
-  image: "/images/comics/WalkingDead.jpg",
-  description:
-    "La saga completa de supervivencia en un mundo post-apocalíptico lleno de zombis.",
-  price: 59.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Image Comics",
+  {
+    title: "The Walking Dead: Compendium One",
+    image: "/images/comics/WalkingDead.jpg",
+    description:
+      "La saga completa de supervivencia en un mundo post-apocalíptico lleno de zombis.",
+    price: 59.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Image Comics",
+    },
   },
-},
-{
-  title: "Deadpool: Merc with a Mouth",
-  image: "/images/comics/deadpoolMercWithAMouth.jpg",
-  description: "Las aventuras irreverentes y cómicas del antihéroe Deadpool.",
-  price: 11.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Marvel",
+  {
+    title: "Deadpool: Merc with a Mouth",
+    image: "/images/comics/deadpoolMercWithAMouth.jpg",
+    description: "Las aventuras irreverentes y cómicas del antihéroe Deadpool.",
+    price: 11.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Marvel",
+    },
   },
-},
-{
-  title: "Wonder Woman: The Hiketeia",
-  image: "/images/comics/WonderWomanTheHiketeia.png",
-  description:
-    "Wonder Woman se ve atrapada en un antiguo ritual griego que la enfrenta a Batman.",
-  price: 12.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "DC Comics",
+  {
+    title: "Wonder Woman: The Hiketeia",
+    image: "/images/comics/WonderWomanTheHiketeia.png",
+    description:
+      "Wonder Woman se ve atrapada en un antiguo ritual griego que la enfrenta a Batman.",
+    price: 12.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "DC Comics",
+    },
   },
-},
-{
-  title: "Hellboy: Seed of Destruction",
-  image: "/images/comics/Hellboy.png",
-  description:
-    "La introducción al mundo sobrenatural de Hellboy y su lucha contra las fuerzas oscuras.",
-  price: 14.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Dark Horse Comics",
+  {
+    title: "Hellboy: Seed of Destruction",
+    image: "/images/comics/Hellboy.png",
+    description:
+      "La introducción al mundo sobrenatural de Hellboy y su lucha contra las fuerzas oscuras.",
+    price: 14.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Dark Horse Comics",
+    },
   },
-},
-{
-  title: "Daredevil: Born Again",
-  image: "/images/comics/DaredevilBornAgain.jpg",
-  description:
-    "Daredevil enfrenta su mayor desafío cuando su identidad secreta es revelada.",
-  price: 13.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Marvel",
+  {
+    title: "Daredevil: Born Again",
+    image: "/images/comics/DaredevilBornAgain.jpg",
+    description:
+      "Daredevil enfrenta su mayor desafío cuando su identidad secreta es revelada.",
+    price: 13.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Marvel",
+    },
   },
-},
-{
-  title: "V de Vendetta",
-  image: "/images/comics/VDeVendeta.jpg",
-  description:
-    "En un futuro distópico, un vigilante enmascarado lucha contra un régimen totalitario.",
-  price: 16.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Vertigo",
+  {
+    title: "V de Vendetta",
+    image: "/images/comics/VDeVendeta.jpg",
+    description:
+      "En un futuro distópico, un vigilante enmascarado lucha contra un régimen totalitario.",
+    price: 16.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Vertigo",
+    },
   },
-},
-{
-  title: "Sin City: El Duro Adiós",
-  image: "/images/comics/SinCity.jpg",
-  description:
-    "Una oscura historia de crimen y venganza en la corrupta ciudad de Basin City.",
-  price: 14.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Dark Horse Comics",
+  {
+    title: "Sin City: El Duro Adiós",
+    image: "/images/comics/SinCity.jpg",
+    description:
+      "Una oscura historia de crimen y venganza en la corrupta ciudad de Basin City.",
+    price: 14.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Dark Horse Comics",
+    },
   },
-},
-{
-  title: "The Boys: Volumen 1",
-  image: "/images/comics/TheBoys.jpg",
-  description:
-    "Un grupo de vigilantes se propone controlar a los superhéroes corruptos.",
-  price: 15.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Dynamite Entertainment",
+  {
+    title: "The Boys: Volumen 1",
+    image: "/images/comics/TheBoys.jpg",
+    description:
+      "Un grupo de vigilantes se propone controlar a los superhéroes corruptos.",
+    price: 15.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Dynamite Entertainment",
+    },
   },
-},
-{
-  title: "Locke & Key: Bienvenidos a Lovecraft",
-  image: "/images/comics/LockeAndKey.jpg",
-  description:
-    "Una familia descubre llaves mágicas que otorgan poderes y desatan peligros.",
-  price: 13.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "IDW Publishing",
+  {
+    title: "Locke & Key: Bienvenidos a Lovecraft",
+    image: "/images/comics/LockeAndKey.jpg",
+    description:
+      "Una familia descubre llaves mágicas que otorgan poderes y desatan peligros.",
+    price: 13.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "IDW Publishing",
+    },
   },
-},
-{
-  title: "Y: El Último Hombre",
-  image: "/images/comics/yultimohombre.jpg",
-  description:
-    "Yorick Brown es el único hombre sobreviviente en un mundo donde los hombres han muerto.",
-  price: 19.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Vertigo",
+  {
+    title: "Y: El Último Hombre",
+    image: "/images/comics/yultimohombre.jpg",
+    description:
+      "Yorick Brown es el único hombre sobreviviente en un mundo donde los hombres han muerto.",
+    price: 19.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Vertigo",
+    },
   },
-},
-{
-  title: "Fábulas: Leyendas en el Exilio",
-  image: "/images/comics/FabulasLeyendasEnElExilio.png",
-  description:
-    "Personajes de cuentos de hadas viven en secreto en Nueva York.",
-  price: 17.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Vertigo",
+  {
+    title: "Fábulas: Leyendas en el Exilio",
+    image: "/images/comics/FabulasLeyendasEnElExilio.png",
+    description:
+      "Personajes de cuentos de hadas viven en secreto en Nueva York.",
+    price: 17.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Vertigo",
+    },
   },
-},
-{
-  title: "Transmetropolitan: De Vuelta en las Calles",
-  image: "/images/comics/Transmetropolitan.jpg",
-  description:
-    "Un periodista cínico lucha contra la corrupción en una ciudad futurista.",
-  price: 16.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Vertigo",
+  {
+    title: "Transmetropolitan: De Vuelta en las Calles",
+    image: "/images/comics/Transmetropolitan.jpg",
+    description:
+      "Un periodista cínico lucha contra la corrupción en una ciudad futurista.",
+    price: 16.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Vertigo",
+    },
   },
-},
-{
-  title: "Predicador: Rumbo a Texas",
-  image: "/images/comics/Predicador.jpg",
-  description:
-    "Un predicador con poderes divinos busca respuestas sobre Dios.",
-  price: 18.99,
-  category: "COMICS",
-  metadata: {
-    issueNumber: 1,
-    publisher: "Vertigo",
+  {
+    title: "Predicador: Rumbo a Texas",
+    image: "/images/comics/Predicador.jpg",
+    description:
+      "Un predicador con poderes divinos busca respuestas sobre Dios.",
+    price: 18.99,
+    category: "COMICS",
+    metadata: {
+      issueNumber: 1,
+      publisher: "Vertigo",
+    },
   },
-},
 
   // Gaming Products
   {
@@ -764,10 +764,9 @@ const products: Prisma.ProductCreateInput[] = [
   },
 
   //Merchandising Products
-  //Merchandising Products
   {
     title: "Camiseta de Naruto Uzumaki",
-    image: "/images/merchandise/Camiseta de Naruto Uzumaki",
+    image: "/images/merchandise/Camiseta de Naruto Uzumaki.jpg",
     description: "Camiseta de algodón con diseño de Naruto en pose de combate.",
     price: 19.99,
     category: "MERCHANDISE",
@@ -779,7 +778,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Taza de Ataque a los Titanes",
-    image: "/images/merchandise/Taza de Ataque a los Titanes",
+    image: "/images/merchandise/Taza de Ataque a los Titanes.jpg",
     description: "Taza de cerámica con el emblema del Cuerpo de Exploración.",
     price: 12.99,
     category: "MERCHANDISE",
@@ -790,7 +789,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Gorra de One Piece",
-    image: "/images/merchandise/Gorra de One Piece",
+    image: "/images/merchandise/Gorra de One Piece.jpg",
     description:
       "Gorra ajustable con el logo de los Piratas de Sombrero de Paja.",
     price: 15.99,
@@ -803,7 +802,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Mochila de My Hero Academia",
-    image: "/images/merchandise/Mochila de My Hero Academia",
+    image: "/images/merchandise/Mochila de My Hero Academia.jpg",
     description: "Mochila escolar con estampado de los personajes principales.",
     price: 29.99,
     category: "MERCHANDISE",
@@ -814,7 +813,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Llaveros de Demon Slayer",
-    image: "/images/merchandise/Llaveros de Demon Slayer",
+    image: "/images/merchandise/Llaveros de Demon Slayer.jpg",
     description:
       "Set de 4 llaveros con los personajes principales de Demon Slayer.",
     price: 14.99,
@@ -826,7 +825,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Póster de Sailor Moon",
-    image: "/images/merchandise/Póster de Sailor Moon",
+    image: "/images/merchandise/Póster de Sailor Moon.jpg",
     description: "Póster decorativo de Sailor Moon en alta resolución.",
     price: 9.99,
     category: "MERCHANDISE",
@@ -838,7 +837,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Almohada de Totoro",
-    image: "/images/merchandise/Almohada de Totoro",
+    image: "/images/merchandise/Almohada de Totoro.jpg",
     description: "Almohada suave con forma de Totoro.",
     price: 24.99,
     category: "MERCHANDISE",
@@ -850,7 +849,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Calcetines de Pokémon",
-    image: "/images/merchandise/Calcetines de Pokémon",
+    image: "/images/merchandise/Calcetines de Pokémon.jpg",
     description:
       "Pack de 5 pares de calcetines con diseños de Pikachu y amigos.",
     price: 19.99,
@@ -863,7 +862,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Figura de acción de Goku",
-    image: "/images/merchandise/Figura de acción de Goku",
+    image: "/images/merchandise/Figura de acción de Goku.jpg",
     description: "Figura articulada de Goku en modo Super Saiyan.",
     price: 34.99,
     category: "MERCHANDISE",
@@ -875,7 +874,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Poster de Neon Genesis Evangelion",
-    image: "/images/merchandise/Poster de Neon Genesis Evangelion",
+    image: "/images/merchandise/Poster de Neon Genesis Evangelion.jpg",
     description: "Poster artístico de la serie Neon Genesis Evangelion.",
     price: 11.99,
     category: "MERCHANDISE",
@@ -887,7 +886,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Sudadera de Fullmetal Alchemist",
-    image: "/images/merchandise/Sudadera de Fullmetal Alchemist",
+    image: "/images/merchandise/Sudadera de Fullmetal Alchemist.jpg",
     description: "Sudadera con capucha con el símbolo de los Elric.",
     price: 39.99,
     category: "MERCHANDISE",
@@ -899,7 +898,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Reloj de bolsillo de Death Note",
-    image: "/images/merchandise/Reloj de bolsillo de Death Note",
+    image: "/images/merchandise/Reloj de bolsillo de Death Note.jpg",
     description: "Reloj de bolsillo con el logo de Death Note.",
     price: 22.99,
     category: "MERCHANDISE",
@@ -910,7 +909,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Funda de móvil de One Punch Man",
-    image: "/images/merchandise/Funda de móvil de One Punch Man",
+    image: "/images/merchandise/Funda de móvil de One Punch Man.jpg",
     description: "Funda protectora con diseño de Saitama.",
     price: 14.99,
     category: "MERCHANDISE",
@@ -1204,7 +1203,7 @@ const products: Prisma.ProductCreateInput[] = [
   // Manga products
   {
     title: "One Piece Volumen 1",
-    image: "/images/mangas/One Piece Volumen 1",
+    image: "/images/mangas/One Piece Volumen 1.jpg",
     description:
       "El inicio de la épica aventura de Monkey D. Luffy en su búsqueda del tesoro legendario.",
     price: 9.99,
@@ -1217,7 +1216,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Naruto Volumen 1",
-    image: "/images/mangas/Naruto Volumen 1",
+    image: "/images/mangas/Naruto Volumen 1.jpg",
     description:
       "Conoce a Naruto Uzumaki, un joven ninja con el sueño de convertirse en Hokage.",
     price: 9.99,
@@ -1230,7 +1229,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Dragon Ball Volumen 1",
-    image: "/images/mangas/Dragon Ball Volumen 1",
+    image: "/images/mangas/Dragon Ball Volumen 1.jpg",
     description:
       "Acompaña a Goku en sus primeras aventuras en busca de las esferas del dragón.",
     price: 9.99,
@@ -1243,7 +1242,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Attack on Titan Volumen 1",
-    image: "/images/mangas/Attack on Titan Volumen 1",
+    image: "/images/mangas/Attack on Titan Volumen 1.jpg",
     description:
       "La humanidad lucha por sobrevivir contra gigantes devoradores de hombres.",
     price: 9.99,
@@ -1256,7 +1255,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "My Hero Academia Volumen 1",
-    image: "/images/mangas/My Hero Academia Volumen 1",
+    image: "/images/mangas/My Hero Academia Volumen 1.jpg",
     description:
       "En un mundo donde casi todos tienen superpoderes, un joven sin poderes sueña con ser héroe.",
     price: 9.99,
@@ -1269,7 +1268,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Death Note Volumen 1",
-    image: "/images/mangas/Death Note Volumen 1",
+    image: "/images/mangas/Death Note Volumen 1.jpg",
     description:
       "Un estudiante encuentra un cuaderno que le permite matar a cualquiera con solo escribir su nombre.",
     price: 9.99,
@@ -1282,7 +1281,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Fullmetal Alchemist Volumen 1",
-    image: "/images/mangas/Fullmetal Alchemist Volumen 1",
+    image: "/images/mangas/Fullmetal Alchemist Volumen 1.jpg",
     description:
       "Dos hermanos alquimistas buscan la piedra filosofal para recuperar lo que perdieron.",
     price: 9.99,
@@ -1295,7 +1294,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Tokyo Ghoul Volumen 1",
-    image: "/images/mangas/Tokyo Ghoul Volumen 1",
+    image: "/images/mangas/Tokyo Ghoul Volumen 1.jpg",
     description:
       "Un joven se convierte en mitad ghoul y debe adaptarse a su nueva vida.",
     price: 9.99,
@@ -1308,7 +1307,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "One Punch Man Volumen 1",
-    image: "/images/mangas/One Punch Man Volumen 1",
+    image: "/images/mangas/One Punch Man Volumen 1.jpg",
     description:
       "Un héroe que derrota a todos sus enemigos de un solo golpe busca un verdadero desafío.",
     price: 9.99,
@@ -1321,7 +1320,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Bleach Volumen 1",
-    image: "/images/mangas/Bleach Volumen 1",
+    image: "/images/mangas/Bleach Volumen 1.jpg",
     description:
       "Un adolescente obtiene poderes de shinigami y debe proteger a los vivos de los espíritus malignos.",
     price: 9.99,
@@ -1334,7 +1333,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Fairy Tail Volumen 1",
-    image: "/images/mangas/Fairy Tail Volumen 1",
+    image: "/images/mangas/Fairy Tail Volumen 1.jpg",
     description:
       "Sigue las aventuras de un gremio de magos en un mundo lleno de magia y peligros.",
     price: 9.99,
@@ -1347,7 +1346,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Hunter x Hunter Volumen 1",
-    image: "/images/mangas/Hunter x Hunter Volumen 1",
+    image: "/images/mangas/Hunter x Hunter Volumen 1.jpg",
     description:
       "Un joven busca convertirse en cazador para encontrar a su padre desaparecido.",
     price: 9.99,
@@ -1519,7 +1518,7 @@ const products: Prisma.ProductCreateInput[] = [
   // Cosplay products
   {
     title: "Disfraz de Sailor Moon",
-    image: "/images/cosplay/Disfraz de Sailor Moon",
+    image: "/images/cosplay/Disfraz de Sailor Moon.jpg",
     description:
       "Conviértete en la icónica guerrera lunar con este disfraz fiel al anime original.",
     price: 49.99,
@@ -1532,7 +1531,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Naruto Uzumaki",
-    image: "/images/cosplay/Disfraz de Naruto Uzumaki",
+    image: "/images/cosplay/Disfraz de Naruto Uzumaki.jpg",
     description:
       "Representa al ninja más famoso de Konoha con este traje detallado.",
     price: 59.99,
@@ -1545,7 +1544,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Hermione Granger",
-    image: "/images/cosplay/Disfraz de Hermione Granger",
+    image: "/images/cosplay/Disfraz de Hermione Granger.jpg",
     description:
       "Luce como la brillante bruja de Hogwarts con este conjunto completo.",
     price: 69.99,
@@ -1558,7 +1557,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Spider-Man",
-    image: "/images/cosplay/Disfraz de Spider-Man",
+    image: "/images/cosplay/Disfraz de Spider-Man.jpg",
     description:
       "Ponte en la piel del amistoso vecino Spider-Man con este traje elástico.",
     price: 79.99,
@@ -1571,7 +1570,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Wonder Woman",
-    image: "/images/cosplay/Disfraz de Wonder Woman",
+    image: "/images/cosplay/Disfraz de Wonder Woman.jpg",
     description:
       "Empodérate con el traje de la amazona más famosa de DC Comics.",
     price: 89.99,
@@ -1584,7 +1583,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Link",
-    image: "/images/cosplay/Disfraz de Link",
+    image: "/images/cosplay/Disfraz de Link.jpg",
     description:
       "Embárcate en una aventura en Hyrule con este traje del héroe legendario.",
     price: 69.99,
@@ -1597,7 +1596,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Harley Quinn",
-    image: "/images/cosplay/Disfraz de Harley Quinn",
+    image: "/images/cosplay/Disfraz de Harley Quinn.jpg",
     description:
       "Destaca con el colorido y atrevido traje de la villana más carismática.",
     price: 59.99,
@@ -1610,7 +1609,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Goku",
-    image: "/images/cosplay/Disfraz de Goku",
+    image: "/images/cosplay/Disfraz de Goku.jpg",
     description: "Transforma en Super Saiyan con este auténtico traje de Goku.",
     price: 74.99,
     category: "COSPLAY",
@@ -1622,7 +1621,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Elsa",
-    image: "/images/cosplay/Disfraz de Elsa",
+    image: "/images/cosplay/Disfraz de Elsa.jpg",
     description: "Brilla como la reina de Arendelle con este elegante vestido.",
     price: 64.99,
     category: "COSPLAY",
@@ -1634,7 +1633,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Deadpool",
-    image: "/images/cosplay/Disfraz de Deadpool",
+    image: "/images/cosplay/Disfraz de Deadpool.jpg",
     description:
       "Adopta el estilo irreverente del mercenario bocazas con este traje.",
     price: 84.99,
@@ -1647,7 +1646,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Lara Croft",
-    image: "/images/cosplay/Disfraz de Lara Croft",
+    image: "/images/cosplay/Disfraz de Lara Croft.jpg",
     description:
       "Conviértete en la intrépida arqueóloga con este conjunto aventurero.",
     price: 54.99,
@@ -1660,7 +1659,7 @@ const products: Prisma.ProductCreateInput[] = [
   },
   {
     title: "Disfraz de Pikachu",
-    image: "/images/cosplay/Disfraz de Pikachu",
+    image: "/images/cosplay/Disfraz de Pikachu.jpg",
     description:
       "Añade un toque adorable a tu cosplay con este traje de Pikachu.",
     price: 44.99,

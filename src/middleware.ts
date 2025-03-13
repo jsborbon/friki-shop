@@ -1,47 +1,46 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-// Define routes that require authentication
+// Define route matchers
 const isProtectedRoute = createRouteMatcher([
-  "/dashboard(.*)", // Protect dashboard and subroutes
-  "/profile(.*)", // Protect user profiles
-  "/orders(.*)", // Protect order history
-  "/cart/checkout", // Protect checkout process
-  "/api/protected(.*)", // Protect API endpoints under /api/protected
+  "/dashboard(.*)",
+  "/profile(.*)",
+  "/orders(.*)",
+  "/cart/checkout(.*)",
+  "/api/protected(.*)",
 ]);
 
-// Define routes restricted to admin users only
-const isAdminRoute = createRouteMatcher([
-  "/admin(.*)", // Admin-only routes
-  "/api/admin/(.*)", // Admin-only API endpoints
-]);
+const isAdminRoute = createRouteMatcher(["/admin(.*)", "/api/admin(.*)"]);
 
 export default clerkMiddleware(async (auth, req) => {
-  const { userId, getToken } = await auth();
-  const token = await getToken(); // Fetch session token
-  let userRole = "user"; // Default role
+  const { userId, sessionClaims } = await auth();
+  // Ensure sessionClaims exists and has publicMetadata
+  const userRole = sessionClaims?.metadata?.role || "user";
 
-  if (token) {
-    const payload = JSON.parse(atob(token.split(".")[1])); // Decode JWT token
-    userRole = payload?.role || "user"; // Extract user role from token
-  }
+  const isTryingToAccessProtected = isProtectedRoute(req);
+  const isTryingToAccessAdmin = isAdminRoute(req);
 
-  // Redirect unauthenticated users to sign-in page
-  if (isProtectedRoute(req) && !userId) {
+  // If trying to access a protected route but not logged in → Redirect to login
+  if (isTryingToAccessProtected && !userId) {
     return NextResponse.redirect(new URL("/sign-in", req.url));
   }
 
-  // Redirect non-admins away from admin routes
-  if (isAdminRoute(req) && userRole !== "admin") {
+  // If trying to access admin routes but not an admin → Redirect to unauthorized
+  if (isTryingToAccessAdmin && userRole !== "admin") {
     return NextResponse.redirect(new URL("/unauthorized", req.url));
   }
 
-  return NextResponse.next(); // Allow access if authentication passes
+  return NextResponse.next();
 });
 
+// Define protected routes
 export const config = {
   matcher: [
-    "/(dashboard|profile|orders|cart|admin)/:path*",
-    "/api/:path*"
-  ]
+    "/dashboard/:path*",
+    "/profile/:path*",
+    "/orders/:path*",
+    "/cart/:path*",
+    "/admin/:path*",
+    "/api/:path*",
+  ],
 };

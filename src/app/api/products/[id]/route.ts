@@ -52,7 +52,7 @@ export async function PUT(req: NextRequest) {
         title,
         price,
         image,
-        category: category?.toUpperCase(), // Ensure enum format
+        category: category?.toUpperCase(), 
         description,
         metadata,
       },

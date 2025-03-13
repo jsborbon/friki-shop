@@ -1,11 +1,14 @@
-/**
- * Product-related type definitions
- */
+export type Category =
+  | "ANIME"
+  | "COMICS"
+  | "GAMING"
+  | "MERCHANDISE"
+  | "COLLECTIBLES"
+  | "BOARD_GAMES"
+  | "MANGA"
+  | "MOVIES"
+  | "COSPLAY";
 
-// Enum for Product Category
-export type Category = "ANIME" | "COMICS" | "GAMING" | "MERCHANDISE" | "COLLECTIBLES" | "BOARD_GAMES" | "MANGA" | "MOVIES" | "COSPLAY";
-
-// Base Product interface
 export interface Product {
   id: number;
   title: string;
@@ -14,7 +17,6 @@ export interface Product {
   description: string;
 }
 
-// Metadata types per category
 interface AnimeMetadata {
   regionCode?: string;
   episodes?: number;
@@ -66,7 +68,6 @@ interface CosplayMetadata {
   franchise?: string;
 }
 
-// Conditional Metadata Type Mapping
 type MetadataMap = {
   ANIME: AnimeMetadata;
   COMICS: ComicsMetadata;
@@ -79,14 +80,12 @@ type MetadataMap = {
   COSPLAY: CosplayMetadata;
 };
 
-// Product with category information (Generic)
 export interface ProductWithCategory<T extends Category = Category>
   extends Product {
   category: T;
   metadata?: MetadataMap[T];
 }
 
-// Specific product types
 export type AnimeProduct = ProductWithCategory<"ANIME">;
 export type ComicsProduct = ProductWithCategory<"COMICS">;
 export type GamingProduct = ProductWithCategory<"GAMING">;

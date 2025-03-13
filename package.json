@@ -12,7 +12,8 @@
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.12.4",
+    "@clerk/clerk-sdk-node": "^4.13.23",
+    "@clerk/nextjs": "^6.12.5",
     "@prisma/client": "^6.5.0",
     "framer-motion": "^12.4.11",
     "next": "15.2.1",

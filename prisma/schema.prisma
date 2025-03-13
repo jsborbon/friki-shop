@@ -41,7 +41,7 @@ model Cart {
 
   product    Product @relation(fields: [productId], references: [id])
 
-  @@unique([userId, productId]) // Define composite unique key
+  @@unique([userId, productId]) 
 }
 
 model Wishlist {
@@ -58,4 +58,23 @@ model Section {
   description String
   image       String
   link        String
+}
+
+model Order {
+  id        String   @id @default(uuid())
+  userId    String  
+  date      DateTime @default(now())
+  total     Float
+  status    String  
+  items     OrderItem[]
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  title     String
+  price     Float
+  quantity  Int
+  image     String?
 }
