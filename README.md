@@ -30,7 +30,7 @@
 ## 🖥️ Imágenes
 
 **Home**
-<img width="1448" alt="image" src="https://github.com/user-attachments/assets/14502be3-0605-48b0-8d98-0ed829000649" />
+![image](https://github.com/user-attachments/assets/0b55fe1a-0b4f-4b3f-92f6-867f130a5e92)
 
 **Search**
 <img width="1453" alt="image" src="https://github.com/user-attachments/assets/96d6859d-7650-4e06-9053-425223ad4604" />
@@ -49,6 +49,9 @@
 
 **Cart**
 <img width="1468" alt="image" src="https://github.com/user-attachments/assets/688f442c-fae1-412c-83f0-97600f2a46fc" />
+
+**Log in**
+<img width="1448" alt="image" src="https://github.com/user-attachments/assets/14502be3-0605-48b0-8d98-0ed829000649" />
 
 **Sign up**
 <img width="1453" alt="image" src="https://github.com/user-attachments/assets/d0785ad5-e5a7-4c6a-82c0-b09eedb257e0" />
