@@ -50,3 +50,19 @@
 **Cart**
 <img width="1468" alt="image" src="https://github.com/user-attachments/assets/688f442c-fae1-412c-83f0-97600f2a46fc" />
 
+**Sign up**
+<img width="1453" alt="image" src="https://github.com/user-attachments/assets/d0785ad5-e5a7-4c6a-82c0-b09eedb257e0" />
+
+**Dashboard (Logged - Admin Option)**
+![image](https://github.com/user-attachments/assets/9d67e8e6-411d-40f1-b7da-ab459bab1761)
+
+**Admin Dashboard (🔐)**
+<img width="1457" alt="image" src="https://github.com/user-attachments/assets/6f3e5459-8bf3-4b0a-b6b2-b74ac6ee6307" />
+
+**Products Admin Board (🔐)**
+![image](https://github.com/user-attachments/assets/afb802e7-b2d1-4a31-ad4d-7a64759ca937)
+
+**Edit Product Admin Board (🔐)**
+![image](https://github.com/user-attachments/assets/d7473271-9e84-4b46-9aa2-5488e86e713f)
+
+
